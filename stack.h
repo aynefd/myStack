@@ -1,3 +1,8 @@
+//I Ayne, have not used any code other than my own(or that in the textbook) for this project.
+//I also have not used any function or data - structure from the Standard - Template Library.
+//I understand that any violation of this disclaimer will result in a 0 for the project.
+
+
 // FILE: stack1.h (part of the namespace main_savitch_7A)
 // TEMPLATE CLASS PROVIDED: stack<T>
 //
@@ -34,51 +39,53 @@
 #include <cassert>
 namespace main_savitch_7A
 {
-    template <class T>
-    class stack
-    {
-    public:
-        //Const for Array
-        static const unsigned CAPACITY = 30;
-        // CONSTRUCTOR
-        stack( ) { used = 0; }
-        
-        // MODIFICATION MEMBER FUNCTIONS
-        void push(const T& entry);
-        void pop( );
-        // CONSTANT MEMBER FUNCTIONS
-        bool empty( ) const { return (used == 0); }
-        unsigned size( ) const { return used; }
-        T top( ) const;
-    private:
-        T data[CAPACITY];        // Partially filled array
-        unsigned used;             // How much of array is being used
-    };
+	template <class T>
+	class stack
+	{
+	public:
+		//Const for Array
+		static const unsigned CAPACITY = 30;
+		// CONSTRUCTOR
+		stack() { used = 0; }
+
+		// MODIFICATION MEMBER FUNCTIONS
+		void push(const T& entry);
+		void pop();
+		// CONSTANT MEMBER FUNCTIONS
+		bool empty() const { return (used == 0); }
+		unsigned size() const { return used; }
+		T top() const;
+	private:
+		T data[CAPACITY];        // Partially filled array
+		unsigned used;             // How much of array is being used
+	};
 }
 namespace main_savitch_7A
 {
-    template <class T>
-    void stack<T>::push(const T& entry)
-    {
-        assert(size()<CAPACITY);
-        data[used] = entry;
-        used++;
-    }
+	template <class T>
+	void stack<T>::push(const T& entry)
+	{
+		assert(size()<CAPACITY);
+		data[used] = entry;
+		used++;
+	}
 
-    template <class T>
-    void stack<T>::pop()
-    {
-        assert(size()>0);
-        used--;
-    
-    }
+	template <class T>
+	void stack<T>::pop()
+	{
+		assert(!empty());
+		used--;
 
-    template <class T>
-    T stack<T>::top() const
-    {
-        assert(size()>0);
-        return data[used-1];
-    
-    }
+
+	}
+
+	template <class T>
+	T stack<T>::top() const
+	{
+		assert(size()>0);
+		return data[used - 1];
+
+
+	}
 }
 #endif
